@@ -19,7 +19,6 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
   children,
 }): JSX.Element => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -45,13 +44,27 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const searchForTodo = (searchParam: string) => {
-    setSearch(searchParam);
+  const addTodo = (title: string) => {
+    setTodos([
+      ...todos,
+      {
+        title,
+        completed: false,
+        userId: 1,
+        id: todos[todos.length - 1].id + 1,
+      },
+    ]);
   };
 
   return (
     <TodosContext.Provider
-      value={{ todos, setTodos, editTodo, removeTodo, searchForTodo, search }}
+      value={{
+        todos,
+        setTodos,
+        editTodo,
+        removeTodo,
+        addTodo,
+      }}
     >
       {children}
     </TodosContext.Provider>
