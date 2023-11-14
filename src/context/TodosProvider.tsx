@@ -36,19 +36,21 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
         .catch((err) => console.log(err));
     };
     toast.promise(fetchTodos, {
-      pending: "Getting list from server",
-      success: "Connected to server👌",
-      error: "Connection rejected 🤯",
+      pending: "❕Getting list from server",
+      success: "💯Connected to server",
+      error: "❌Connection rejected",
     });
     fetchTodos();
   }, []);
 
   const editTodo = (newTitle: string, id: number) => {
     todos.find((todo) => todo.id === id && (todo.title = newTitle));
+    // ! Complete this part
   };
 
   const removeTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    toast.error(`item has been removed`);
   };
 
   const addTodo = (title: string) => {
@@ -61,6 +63,7 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
         id: todos[todos.length - 1].id + 1,
       },
     ]);
+    toast.success(`item has been added`);
   };
 
   return (
