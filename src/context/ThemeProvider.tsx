@@ -4,7 +4,12 @@ interface IThemeProvider {
   children: JSX.Element | JSX.Element[];
 }
 
-const ThemeContext = createContext({});
+type TContext = {
+  isDark?: boolean;
+  changeTheme?: () => void;
+};
+
+const ThemeContext = createContext<TContext>({});
 
 const ThemeProvider: React.FC<IThemeProvider> = ({ children }): JSX.Element => {
   const [isDark, setIsDark] = useState(

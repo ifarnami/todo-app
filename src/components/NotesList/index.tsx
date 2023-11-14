@@ -5,11 +5,11 @@ import Note from "./components/Note";
 interface INotesListProps {}
 
 const NotesList: React.FC<INotesListProps> = (): JSX.Element => {
-  const { todos, search } = useContext(TodosContext);
+  const { todos } = useContext(TodosContext);
 
   return (
     <div className="overflow-y-scroll">
-      {todos.length ? (
+      {todos !== undefined && todos.length ? (
         todos.map((todo) => {
           const { title, completed, id } = todo;
           return <Note title={title} completed={completed} key={id} id={id} />;

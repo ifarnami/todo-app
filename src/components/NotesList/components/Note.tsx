@@ -14,7 +14,7 @@ const Note: React.FC<INoteProps> = ({ title, completed, id }): JSX.Element => {
   const { removeTodo } = useContext(TodosContext);
 
   const handleTrashCick = () => {
-    removeTodo(id);
+    removeTodo !== undefined && removeTodo(id);
   };
 
   const handleUncheck = () => {

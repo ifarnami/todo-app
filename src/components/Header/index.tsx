@@ -12,15 +12,15 @@ const Header: React.FC<IHeaderProps> = (): JSX.Element => {
   const { addTodo } = useContext(TodosContext);
 
   const handleClick = () => {
-    changeTheme();
+    changeTheme !== undefined && changeTheme();
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodoTitle(e.target.value);
   };
 
   const handleAddTodo = () => {
-    newTodoTitle.length && addTodo(newTodoTitle);
+    addTodo !== undefined && newTodoTitle.length && addTodo(newTodoTitle);
   };
 
   return (

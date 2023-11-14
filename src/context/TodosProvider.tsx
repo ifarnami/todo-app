@@ -13,7 +13,14 @@ type Todo = {
   completed: boolean;
 };
 
-const TodosContext = createContext({});
+type TTodoContext = {
+  todos?: Todo[];
+  editTodo?: (newTitle: string, id: number) => void;
+  removeTodo?: (id: number) => void;
+  addTodo?: (newTitle: string) => void;
+};
+
+const TodosContext = createContext<TTodoContext>({});
 
 const TodosProvider: React.FC<ITodosProviderProps> = ({
   children,
@@ -60,7 +67,6 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
     <TodosContext.Provider
       value={{
         todos,
-        setTodos,
         editTodo,
         removeTodo,
         addTodo,
