@@ -1,6 +1,6 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./components/Layout";
+import Layout from "./Layout";
 import Header from "./components/Header";
 import ThemeProvider from "./context/ThemeProvider";
 import TodosProvider from "./context/TodosProvider";
