@@ -14,13 +14,13 @@ type Todo = {
 };
 
 type TTodoContext = {
-  todos?: Todo[];
-  editTodo?: (newTitle: string, id: number) => void;
-  removeTodo?: (id: number) => void;
-  addTodo?: (newTitle: string) => void;
+  todos: Todo[];
+  editTodo: (newTitle: string, id: number) => void;
+  removeTodo: (id: number) => void;
+  addTodo: (newTitle: string) => void;
 };
 
-const TodosContext = createContext<TTodoContext>({});
+const TodosContext = createContext<TTodoContext | undefined>(undefined);
 
 const TodosProvider: React.FC<ITodosProviderProps> = ({
   children,

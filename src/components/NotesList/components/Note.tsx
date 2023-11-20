@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./Note.css";
 import { TfiTrash } from "react-icons/tfi";
-import { TodosContext } from "../../../context/TodosProvider";
+import { useTodosContext } from "../../../hooks/useTodosContext";
 
 interface INoteProps {
   title: string;
@@ -11,10 +11,10 @@ interface INoteProps {
 
 const Note: React.FC<INoteProps> = ({ title, completed, id }): JSX.Element => {
   const [isCompleted, setIsCompleted] = useState(completed);
-  const { removeTodo } = useContext(TodosContext);
+  const { removeTodo } = useTodosContext();
 
   const handleTrashCick = () => {
-    removeTodo !== undefined && removeTodo(id);
+    removeTodo(id);
   };
 
   const handleUncheck = () => {

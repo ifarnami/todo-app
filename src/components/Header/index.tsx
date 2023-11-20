@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MdAddCircle } from "react-icons/md";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { ThemeContext } from "../../context/ThemeProvider";
-import { TodosContext } from "../../context/TodosProvider";
+import { useThemeContext } from "../../hooks/useThemeContext";
+import { useTodosContext } from "../../hooks/useTodosContext";
 
 interface IHeaderProps {}
 
 const Header: React.FC<IHeaderProps> = (): JSX.Element => {
   const [newTodoTitle, setNewTodoTitle] = useState("");
-  const { isDark, changeTheme } = useContext(ThemeContext);
-  const { addTodo } = useContext(TodosContext);
+  const { isDark, changeTheme } = useThemeContext();
+  const { addTodo } = useTodosContext();
 
   const handleClick = () => {
-    changeTheme !== undefined && changeTheme();
+    changeTheme();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ const Header: React.FC<IHeaderProps> = (): JSX.Element => {
   };
 
   const handleAddTodo = () => {
-    addTodo !== undefined && newTodoTitle.length && addTodo(newTodoTitle);
+    newTodoTitle.length && addTodo(newTodoTitle);
   };
 
   return (

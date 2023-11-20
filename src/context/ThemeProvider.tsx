@@ -1,17 +1,19 @@
 import { createContext, useState } from "react";
 
-interface IThemeProvider {
+interface IThemeProviderProps {
   children: JSX.Element | JSX.Element[];
 }
 
 type TContext = {
-  isDark?: boolean;
-  changeTheme?: () => void;
+  isDark: boolean;
+  changeTheme: () => void;
 };
 
-const ThemeContext = createContext<TContext>({});
+const ThemeContext = createContext<TContext | undefined>(undefined);
 
-const ThemeProvider: React.FC<IThemeProvider> = ({ children }): JSX.Element => {
+const ThemeProvider: React.FC<IThemeProviderProps> = ({
+  children,
+}): JSX.Element => {
   const [isDark, setIsDark] = useState(
     document.documentElement.classList.contains("dark")
   );
