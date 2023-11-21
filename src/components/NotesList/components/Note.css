@@ -1,5 +1,17 @@
+.delete {
+  visibility: none;
+  opacity: 0;
+}
+
+.note:hover .delete {
+  transition: all .4s ease;
+  visibility: visible;
+  opacity: 100;
+}
+
+/* CheckBox styles */
 .checkbox-wrapper-11 {
-  --check: #534CC2;
+  --check: #534cc2;
   --disabled: #c3c8de;
   --border-radius: 10px;
   border-radius: var(--border-radius);

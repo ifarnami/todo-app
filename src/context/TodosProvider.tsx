@@ -49,6 +49,7 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
     );
     if (selectedTodo !== undefined) {
       selectedTodo.title = newTitle;
+      console.log("edited:", selectedTodo.title);
     }
   };
 
@@ -59,13 +60,13 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
 
   const addTodo = (title: string) => {
     setTodos([
-      ...todos,
       {
         title,
         completed: false,
         userId: 1,
         id: todos[todos.length - 1].id + 1,
       },
+      ...todos,
     ]);
     toast.success(`item has been added`);
   };

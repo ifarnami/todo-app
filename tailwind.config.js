@@ -18,6 +18,7 @@ export default {
         danger: "#E50000",
       },
       gray: "#CDCDCD",
+      green: "#3CCF4E",
     },
     extend: {},
   },
