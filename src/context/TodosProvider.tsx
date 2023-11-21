@@ -44,8 +44,12 @@ const TodosProvider: React.FC<ITodosProviderProps> = ({
   }, []);
 
   const editTodo = (newTitle: string, id: number) => {
-    todos.find((todo) => todo.id === id && (todo.title = newTitle));
-    // ! Complete this part
+    const selectedTodo = todos.find(
+      (todo) => todo.id === id && (todo.title = newTitle)
+    );
+    if (selectedTodo !== undefined) {
+      selectedTodo.title = newTitle;
+    }
   };
 
   const removeTodo = (id: number) => {
